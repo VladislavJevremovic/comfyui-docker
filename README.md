@@ -37,6 +37,11 @@
 * [rclone](https://rclone.org/)
 * [Application Manager](https://github.com/ashleykleynhans/app-manager) 2.0.0
 * [CivitAI Downloader](https://github.com/ashleykleynhans/civitai-downloader)
+* Pre-installed custom nodes:
+  ComfyUI-KJNodes, ComfyUI-Easy-Use, rgthree-comfy,
+  ComfyUI-Inpaint-CropAndStitch, ComfyUI-WanVideoWrapper,
+  ComfyUI-VideoHelperSuite, ComfyUI-GGUF (with pinned opencv, Pillow, scipy, numba,
+  onnxruntime, gguf, safetensors, transformers)
 
 ## Available on RunPod
 

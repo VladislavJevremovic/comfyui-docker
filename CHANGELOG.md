@@ -7,6 +7,15 @@ This image tracks upstream [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 releases, so most entries correspond to a ComfyUI version bump along with any
 base image, Torch, xformers, or tooling changes that shipped alongside it.
 
+## [Unreleased]
+- Pre-install custom nodes and pinned dependencies during the
+  Docker build so they don't need to be installed at runtime. Adds
+  ComfyUI-KJNodes, ComfyUI-Easy-Use, rgthree-comfy,
+  ComfyUI-Inpaint-CropAndStitch, ComfyUI-WanVideoWrapper,
+  ComfyUI-VideoHelperSuite and ComfyUI-GGUF along with pinned opencv-python-headless, Pillow,
+  scipy, numba, onnxruntime, gguf, safetensors, and transformers. Model
+  downloads and HuggingFace authentication are NOT included.
+
 ## [v0.26.0] - 2026-06-23
 - Bump ComfyUI to v0.26.0.
 - Fixed: stop forcing `numpy==1.26.4` at the end of the ComfyUI install.

@@ -12,6 +12,9 @@ ARG INDEX_URL
 ARG COMFYUI_VERSION
 RUN /install_comfyui.sh
 
+# Install custom nodes and pinned dependencies
+RUN /install_custom_stuff.sh
+
 # Install Application Manager
 ARG APP_MANAGER_VERSION
 RUN /install_app_manager.sh
