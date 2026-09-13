@@ -11,7 +11,7 @@ variable "APP" {
 }
 
 variable "RELEASE" {
-    default = "v0.29.2"
+    default = "v0.35.0"
 }
 
 variable "RELEASE_SUFFIX" {
@@ -23,11 +23,11 @@ variable "BASE_IMAGE_REPOSITORY" {
 }
 
 variable "BASE_IMAGE_VERSION" {
-    default = "2.5.0"
+    default = "2.6.0"
 }
 
 variable "APP_MANAGER_VERSION" {
-    default = "2.0.1"
+    default = "2.0.2"
 }
 
 variable "CIVITAI_DOWNLOADER_VERSION" {

@@ -16,6 +16,47 @@ base image, Torch, xformers, or tooling changes that shipped alongside it.
   scipy, numba, onnxruntime, gguf, safetensors, and transformers. Model
   downloads and HuggingFace authentication are NOT included.
 
+## [v0.35.0] - 2026-09-10
+- Bump ComfyUI to v0.35.0.
+- Bump Application Manager to 2.0.2.
+- Fixed: Extend the cu124 torch 2.6.0 `comfy-kitchen` patch (first added in
+  v0.31.0 for `na.py`'s `kernel_size: list[int]` / `is_causal: list[bool]`)
+  to cover all modules. comfy-kitchen 0.2.33 (pinned by ComfyUI v0.35.0)
+  adds `sol_attn` with `sink_blocks: list[int]` / `sink_q: list[int]` which
+  hits the same `infer_schema` failure
+  (`Parameter sink_blocks has unsupported type list[int]`) as the `na3d` op.
+  Now patches every `.py` under `comfy_kitchen` that uses `list[int]` /
+  `list[bool]` (and `list[float]` / `list[str]` for future-proofing) to use
+  `typing.List[...]` instead, keeping the package version unchanged so
+  ComfyUI's compatibility check stays happy. Only runs on torch < 2.7
+  images (cu124, torch 2.6.0); cu128 images (torch 2.11.0) handle builtin
+  generics natively and are left unpatched.
+
+## [v0.34.0] - 2026-08-26
+- Bump ComfyUI to v0.34.0.
+
+## [v0.33.1] - 2026-08-14
+- Bump ComfyUI to v0.33.1.
+
+## [v0.32.0] - 2026-08-12
+- Bump ComfyUI to v0.32.0.
+
+## [v0.31.0] - 2026-08-09
+- Bump ComfyUI to v0.31.0.
+- Fixed: ComfyUI crashing on startup on the cu124 images with
+  `Parameter kernel_size has unsupported type list[int]` from
+  `comfy-kitchen`'s `na3d` custom op. comfy-kitchen 0.2.28 (pinned by
+  ComfyUI v0.31.0) uses builtin `list[int]`/`list[bool]` annotations, which
+  torch < 2.7 cannot infer; the cu124 images use torch 2.6.0. Patch the
+  installed `na.py` to use `typing.List[...]` instead, keeping comfy-kitchen
+  at 0.2.28 so ComfyUI's version-compatibility check is satisfied. The patch
+  only runs on torch < 2.7 images; the cu128 images (torch 2.11.0) handle
+  builtin generics natively and are left unpatched.
+
+## [v0.30.0] - 2026-08-03
+- Bump ComfyUI to v0.30.0.
+- Bump base image to 2.6.0.
+
 ## [v0.29.2] - 2026-07-31
 - Bump ComfyUI to v0.29.2.
 - Bump base image to 2.5.0.
